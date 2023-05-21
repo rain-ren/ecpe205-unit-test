@@ -76,16 +76,16 @@ class CalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"civic","kayak","level","racecar","radar"})
-    void shouldComputeFactorial (String value) {
+    void shouldTestIfPalindrome (String value) {
         assertTrue(calc.isPalindrome(value));
     }
 
     @ParameterizedTest
     @MethodSource("arrayOfIntegerSets")
     void shouldOrderValues(int[] values) {
-//        calc.displayValues(values);
-        calc.bubbleSort(values);
-//        calc.displayValues(values);
+    //    calc.displayValues(values);
+        calc.insertionSort(values);
+    //    calc.displayValues(values);
         assertTrue( calc.isSortedInAscending(values));
     }
 
@@ -106,9 +106,9 @@ class CalculatorTest {
         return Stream.of(
                 Arguments.of(2,2,4),
                 Arguments.of(3,4,81),
-                Arguments.of(2,7,128),
-                Arguments.of(3,7,2187),
-                Arguments.of(3,0,1)
+                Arguments.of(2,6,64),
+                Arguments.of(3,8,6561),
+                Arguments.of(3,10,59049)
         );
     }
 
@@ -116,19 +116,19 @@ class CalculatorTest {
 
         //1st parameter is the value, 2nd is the answer
         return Stream.of(
-                Arguments.of(2,2),
                 Arguments.of(3,6),
-                Arguments.of(7,5040),
-                Arguments.of(0,1),
-                Arguments.of(8,40320)
+                Arguments.of(6,720),
+                Arguments.of(9,362880),
+                Arguments.of(12,479001600),
+                Arguments.of(0,1)
         );
     }
 
     static Stream<Arguments> arrayOfIntegerSets () {
         return Stream.of(
                 Arguments.of(new int[]{1,2,3,4,1}),
-                Arguments.of(new int[]{7,1,5,4,1}),
-                Arguments.of(new int[]{7,2,8,3,4})
+                Arguments.of(new int[]{10,9,4,5,7}),
+                Arguments.of(new int[]{7,2,0,3,4})
         );
     }
 
